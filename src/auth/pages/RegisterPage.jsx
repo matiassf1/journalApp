@@ -36,9 +36,9 @@ export const RegisterPage = () => {
               fullWidth
             />
           </Grid>
-          <Grid container spacing={2} sx={{ mb: 2 }}>
-            <Grid item xs={12} sm={6}>
-              <Button variant='contained' sx={{ mt: 2 }} fullWidth>
+          <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
+            <Grid item xs={12} >
+              <Button variant='contained' fullWidth>
                 Create account
               </Button>
             </Grid>

@@ -31,15 +31,15 @@ export const LoginPage = () => {
             />
           </Grid>
 
-          <Grid container spacing={2} sx={{ mb: 2 }}>
+          <Grid container spacing={2} sx={{ mb: 2 , mt: 1 }}>
             <Grid item xs={12} sm={6}>
-              <Button variant='contained' sx={{ mt: 2 }} fullWidth>
+              <Button variant='contained' fullWidth>
                 Login
               </Button>
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <Button variant='contained' sx={{ mt: 2 }} fullWidth>
+              <Button variant='contained' fullWidth>
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
