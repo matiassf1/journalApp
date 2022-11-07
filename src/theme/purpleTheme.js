@@ -11,6 +11,9 @@ export const purpleTheme = createTheme({
         },
         error:{
             main: red.A400
+        },
+        add:{
+            main: '#9f86c0'
         }
     }
 })
