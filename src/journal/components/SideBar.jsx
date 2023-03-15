@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux'
+
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
@@ -14,6 +16,9 @@ import ListItemText from '@mui/material/ListItemText'
 import TurnedInNot from '@mui/icons-material/TurnedInNot'
 
 export const SideBar = ({ drawerWidth = 240 }) => {
+
+    const {displayName} = useSelector(state => state.auth)
+
   return (
     <Box 
         component='nav'
@@ -28,7 +33,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
         >
             <Toolbar>
                 <Typography variant='h6' noWrap component='div'>
-                    Matias Sfer
+                    {displayName}
                 </Typography>
             </Toolbar>
 
@@ -36,7 +41,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
         <List>
             {
-                ["enero", "feb", "marz"].map( text => (
+                ["Jan", "Feb", "March"].map( text => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -45,7 +50,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
                             <Grid container>
                                 <ListItemText primary={text} />
-                                <ListItemText secondary={'hola soy un texto secundario para aprender MaterialUI'} />
+                                <ListItemText secondary={'Hi I am a text to show this with MaterialUI'} />
                             </Grid>
 
                         </ListItemButton>
