@@ -14,10 +14,12 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
 import TurnedInNot from '@mui/icons-material/TurnedInNot'
+import { SideBarItem } from './SideBarItem'
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 
     const {displayName} = useSelector(state => state.auth)
+    const { notes } = useSelector( (state) => state.journal)
 
   return (
     <Box 
@@ -41,20 +43,8 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
         <List>
             {
-                ["Jan", "Feb", "March"].map( text => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <TurnedInNot />
-                            </ListItemIcon>
-
-                            <Grid container>
-                                <ListItemText primary={text} />
-                                <ListItemText secondary={'Hi I am a text to show this with MaterialUI'} />
-                            </Grid>
-
-                        </ListItemButton>
-                    </ListItem>
+                notes.map( note => (
+                   <SideBarItem key={note.id} {...note} />
                 ))
             }
         </List>

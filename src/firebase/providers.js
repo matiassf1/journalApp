@@ -11,7 +11,7 @@ export const singInWithGoogle = async() => {
         const result = await signInWithPopup( FirebaseAuth, googleProvider );
         // const credentials = GoogleAuthProvider.credentialFromResult( result );
         const { displayName, email, uid, photoURL } = result.user;
-        
+        console.log('entre');
         return {
             ok: true,
             // userInfo

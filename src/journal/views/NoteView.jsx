@@ -1,3 +1,6 @@
+
+import { useDispatch, useSelector } from "react-redux";
+
 import { ImageGallery } from "../components";
 
 import Grid from "@mui/material/Grid";
@@ -8,6 +11,8 @@ import TextField from "@mui/material/TextField";
 import SaveOutlined from "@mui/icons-material/SaveOutlined";
 
 export const NoteView = () => {
+
+
   return (
     <Grid
       container
