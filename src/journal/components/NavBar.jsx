@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography'
 import MenuOutlined from '@mui/icons-material/MenuOutlined'
 import LogoutOutlined from '@mui/icons-material/LogoutOutlined'
 
+
 export const NavBar = ({ drawerWidth = 240 }) => {
 
     const dispatch = useDispatch();
