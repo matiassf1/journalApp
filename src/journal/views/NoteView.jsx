@@ -9,11 +9,17 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css'
+
 import SaveOutlined from "@mui/icons-material/SaveOutlined";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import { setActiveNote, startSaveNote } from "../../store/journal";
 
 export const NoteView = () => {
-  const { active: note } = useSelector((state) => state.journal);
+
+  const dispatch = useDispatch();
+  const { active: note, messageSaved } = useSelector((state) => state.journal);
 
   const { title, body, date, formState, onInputChange } = useForm(note);
 
@@ -21,6 +27,23 @@ export const NoteView = () => {
     const newDate = new Date(date);
     return newDate.toUTCString();
   }, [date]);
+
+  useEffect(() => {
+    dispatch(setActiveNote(formState))
+  }, [formState])
+  
+  useEffect(() => {
+    
+    messageSaved.length > 0 
+    ? Swal.fire('Updated note', messageSaved, 'success')
+    : null
+
+  }, [messageSaved])
+  
+
+  const onSaveNote = () => {
+    dispatch( startSaveNote() );
+  }
 
   return (
     <Grid
@@ -38,9 +61,9 @@ export const NoteView = () => {
       </Grid>
 
       <Grid item>
-        <Button color="primary" sx={{ padding: 2, mb: 1 }}>
+        <Button color="primary" sx={{ padding: 2, mb: 1 }} onClick={onSaveNote} >
           <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
-          Guardar
+          Save
         </Button>
       </Grid>
 
