@@ -31,8 +31,8 @@ export const JournalPage = () => {
         size="large"
         sx={{
           color: "white",
-          backgroundColor: "add.main",
-          ":hover": { backgroundColor: "add.main", opacity: 0.9 },
+          backgroundColor: "#61788C",
+          ":hover": { backgroundColor: "#61788C", opacity: 0.9 },
           position: "fixed",
           right: 50,
           bottom: 50,
