@@ -12,15 +12,15 @@ export const startNewNote = () => {
         const newNote = {
             title: '',
             body: '',
+            imageUrls: [],
             date: new Date().getTime(),
         }
 
         const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
-        const setDocResponse = await setDoc(newDoc, newNote);
+        await setDoc(newDoc, newNote);
 
         newNote.id = newDoc.id;
 
-        //!dispatch
         dispatch(addNewEmptyNote(newNote));
         dispatch(setActiveNote(newNote))
 
@@ -44,11 +44,11 @@ export const startSaveNote = () => {
 
         const { uid } = getState().auth;
         const { active: note } = getState().journal;
-        
+
         const noteToFirestore = { ...note };
         delete noteToFirestore.id;
 
-        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${note.id}` )
+        const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`)
         await setDoc(docRef, noteToFirestore, { merge: true });
 
         dispatch(updateNote(note))
@@ -56,24 +56,24 @@ export const startSaveNote = () => {
 }
 
 
-export const startUploadingFiles = ( files = [] ) => {
-    return async(dispatch, getState) => {
+export const startUploadingFiles = (files = []) => {
+    return async (dispatch, getState) => {
         dispatch(setSaving());
 
-       const fileUploadPromises = [];
+        const fileUploadPromises = [];
 
-       for (const file of files) {
-        fileUploadPromises.push(fileUpload(file));
-       }
+        for (const file of files) {
+            fileUploadPromises.push(fileUpload(file));
+        }
 
-       const photosUrls = await Promise.all(fileUploadPromises);
-       
-       dispatch(setPhotoToActiveNote(photosUrls))
+        const photosUrls = await Promise.all(fileUploadPromises);
+
+        dispatch(setPhotoToActiveNote(photosUrls))
     }
 }
 
 export const startDeletingNote = () => {
-    return async(dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(setSaving());
         const { active: note } = getState().journal
         const { uid } = getState().auth
