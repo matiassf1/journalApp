@@ -8,9 +8,9 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 export const ImageGallery = ({ images }) => {
   return (
     <>
-      {images.length > 0 ? (
+      {images?.length > 0 ? (
         <ImageList sx={{ width: "100%", height: 500 }} cols={4} rowHeight={200}>
-          {images.map((image) => (
+          {images?.map((image) => (
             <ImageListItem
               key={image}
               className="animate__animated animate__fadeIn animate__faster"
