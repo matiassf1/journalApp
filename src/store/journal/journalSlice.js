@@ -5,6 +5,7 @@ export const journalSlice = createSlice({
     initialState: {
         isSaving: false,
         messageSaved: '',
+        deleteMessage: '',
         notes: [],
         active: null
         // active: {
@@ -29,6 +30,7 @@ export const journalSlice = createSlice({
         setActiveNote: (state, action) => {
             state.active = action.payload;
             state.messageSaved = '';
+            state.deleteMessage = '';
         },
         setNotes: (state, action) => {
             state.notes = action.payload
@@ -36,6 +38,7 @@ export const journalSlice = createSlice({
         setSaving: (state) => {
             state.isSaving = true
             state.messageSaved = ''
+            state.deleteMessage = ''
         },
         updateNote: (state, { payload }) => {
             state.isSaving = false;
@@ -51,7 +54,7 @@ export const journalSlice = createSlice({
             state.isSaving = false;
             state.notes = state.notes.filter((note) =>  note.id !== payload.id )
             state.active = null;
-            state.messageSaved = `${payload.title}, has been succesfully updated`
+            state.deleteMessage = `${payload.title}, has been succesfully deleted`
         },
         setPhotoToActiveNote: (state, { payload }) => {
             state.active.imageUrls = [...state.active.imageUrls, ...payload];
