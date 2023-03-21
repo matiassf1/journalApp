@@ -29,13 +29,15 @@ export const SideBar = ({ drawerWidth = 240 }, props) => {
 
                 sx={{ display: { sm: 'block', xs: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth } }}
             >
-                <Toolbar>
-                    <Typography variant='h6' noWrap component='div'>
+                <Box>                
+                    <Toolbar>
+                        <Typography variant='h6' noWrap component='div'>
                         {displayName}
-                    </Typography>
-                </Toolbar>
+                        </Typography>
+                    </Toolbar>
 
-                <Divider />
+                    <Divider />
+                </Box>
 
                 {
                     (notes.length > 0)
@@ -46,14 +48,11 @@ export const SideBar = ({ drawerWidth = 240 }, props) => {
                                 ))
                             }
                         </List>)
-                        : (<>
-                            <Typography variant='h7' sx={{ textAlign: 'center', my: '10', opacity: 0.7 }} fontWeight={'bold'} >
-                                You don't have Notes
-                            </Typography>
-                            <Typography variant='h7' sx={{ textAlign: 'center', my: '10', opacity: 0.4 }} fontWeight={'bold'} >
+                        : (
+                            <Typography variant='h7' sx={{ textAlign: 'center', my: 'auto', opacity: 0.4 }} fontWeight={'bold'} >
                                 Create Notes and show them here!
                             </Typography>
-                        </>)
+                        )
                 }
 
 
