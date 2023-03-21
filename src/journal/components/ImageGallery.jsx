@@ -40,7 +40,7 @@ export const ImageGallery = ({ images }) => {
           }}
         >
           <CloudUploadIcon sx={{ fontSize: 90, color: "white" }} />
-          <Typography color="white" variant="h4">
+          <Typography color="white" sx={{ textAlign: 'center' }} variant="h4">
             Add some image to your note
           </Typography>
         </Grid>
