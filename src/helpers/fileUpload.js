@@ -2,7 +2,7 @@ export const fileUpload = async(file) => {
 
     if(!file) throw new Error('We do not have any file here');
 
-    const cloudURL = import.meta.env.VITE_CLOUD_URL
+    const cloudURL = 'https://api.cloudinary.com/v1_1/dugeclbkt/image/upload'
     const formData = new FormData();
 
     formData.append('upload_preset','react-journal');
