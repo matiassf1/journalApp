@@ -5,18 +5,13 @@ import Drawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
-import Grid from '@mui/material/Grid'
 
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
 
-import TurnedInNot from '@mui/icons-material/TurnedInNot'
 import { SideBarItem } from './SideBarItem'
 
-export const SideBar = ({ drawerWidth = 240 }) => {
+
+export const SideBar = ({ drawerWidth = 240 }, props) => {
 
     const {displayName} = useSelector(state => state.auth)
     const { notes } = useSelector( (state) => state.journal)

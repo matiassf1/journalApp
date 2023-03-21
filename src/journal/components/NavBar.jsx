@@ -11,14 +11,14 @@ import MenuOutlined from '@mui/icons-material/MenuOutlined'
 import LogoutOutlined from '@mui/icons-material/LogoutOutlined'
 
 
-export const NavBar = ({ drawerWidth = 240 }) => {
+export const NavBar = ({ drawerWidth = 240, handleDrawerToggle }) => {
+
 
     const dispatch = useDispatch();
-
+    
     const onLogout = () => {
         dispatch(startLogOut())
     }
-
 
   return (
     <AppBar 
@@ -33,7 +33,8 @@ export const NavBar = ({ drawerWidth = 240 }) => {
                 color='inherit'
                 edge='start'
                 sx={{ mr:2, display: { sm: 'none' } }}
-            >
+                onClick={handleDrawerToggle}
+           >
                 <MenuOutlined />
             </IconButton>
 

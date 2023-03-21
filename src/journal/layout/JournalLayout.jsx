@@ -1,27 +1,49 @@
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import { NavBar, SideBar } from '../components';
+import Box from "@mui/material/Box";
+import { useState } from "react";
+import { NavBar, SideBar } from "../components";
+import { NotesResponsive } from "../components/NotesResponsive";
 
-const drawerWidth = 240; 
+import Toolbar from "@mui/material/Toolbar";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-export const JournalLayout = ({children}) => {
+const drawerWidth = 240;
+
+export const JournalLayout = ({ children }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+  const { height, width } = useWindowDimensions();
+
   return (
-    <Box sx={{display: 'flex'}}
-    className="animate__animated animate__fadeIn animate__faster"
+    <Box
+      sx={{ display: "flex" }}
+      className="animate__animated animate__fadeIn animate__faster"
     >
-        <NavBar drawerWidth={drawerWidth} />
+      <NavBar
+        drawerWidth={drawerWidth}
+        handleDrawerToggle={handleDrawerToggle}
+      />
 
-        <SideBar drawerWidth={drawerWidth} />
+      {width < 600 ? (
+        <NotesResponsive
+          drawerWidth={240}
+          mobileOpen={mobileOpen}
+          handleDrawerToggle={handleDrawerToggle}
+        />
+      ) : (
+        <SideBar
+          drawerWidth={drawerWidth}
+          handleDrawerToggle={handleDrawerToggle}
+        />
+      )}
 
-        <Box 
-            component='main'
-            sx={{ flexGrow: 1, p: 3 }}
-        >
-            <Toolbar />
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Toolbar />
 
-            {children}
-        </Box>
-
+        {children}
+      </Box>
     </Box>
-  )
-}
+  );
+};

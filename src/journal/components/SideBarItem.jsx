@@ -5,10 +5,9 @@ import { setActiveNote } from '../../store/journal/journalSlice'
 import TurnedInNot from '@mui/icons-material/TurnedInNot'
 import { Grid, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 
-export const SideBarItem = ({title, body, id, date, imageUrls=[] }) => {
-
+export const SideBarItem = ({title, body, id, date, imageUrls=[],  }) => {
     const dispatch = useDispatch()
-
+    console.log('rendered');
     const newTitle = useMemo( () => {
         return title.length > 15 
             ? title.substring(0,15) + '...'

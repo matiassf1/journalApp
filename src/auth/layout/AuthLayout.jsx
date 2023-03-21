@@ -13,7 +13,6 @@ export const AuthLayout = ({children, title=''}) => {
     <Grid
       item
       className='box-shadow'
-      // Tamaño de la pantalla
       xs={3}
       sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2, width: { sm: 450 } }}>
       <Typography variant='h5' sx={{ mb: 1 }}>
