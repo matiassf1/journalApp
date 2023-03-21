@@ -19,6 +19,8 @@ export const journalSlice = createSlice({
         cleanNotes: (state) => {
             state.notes = [];
             state.active = null;
+            messageSaved = '',
+            deleteMessage = '';
         },
         savingNewNote: (state) => {
             state.isSaving = true
