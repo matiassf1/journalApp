@@ -13,42 +13,53 @@ import { SideBarItem } from './SideBarItem'
 
 export const SideBar = ({ drawerWidth = 240 }, props) => {
 
-    const {displayName} = useSelector(state => state.auth)
-    const { notes } = useSelector( (state) => state.journal)
+    const { displayName } = useSelector(state => state.auth)
+    const { notes } = useSelector((state) => state.journal)
 
-  return (
-    <Box 
-        component='nav'
-        color='inherit'
-        className='animate__animated animate__fadeIn animate__faster'
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}    
-    >
-        <Drawer
-            variant='permanent'
-            open={true}
-            
-            sx={{ display: { sm: 'block', xs: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }}}
+    return (
+        <Box
+            component='nav'
+            color='inherit'
+            className='animate__animated animate__fadeIn animate__faster'
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         >
-            <Toolbar>
-                <Typography variant='h6' noWrap component='div'>
-                    {displayName}
-                </Typography>
-            </Toolbar>
+            <Drawer
+                variant='permanent'
+                open={true}
 
-        <Divider />
+                sx={{ display: { sm: 'block', xs: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth } }}
+            >
+                <Toolbar>
+                    <Typography variant='h6' noWrap component='div'>
+                        {displayName}
+                    </Typography>
+                </Toolbar>
 
-        <List className="animate__animated animate__fadeIn animate__faster">
-            {
-                notes?.map( note => (
-                   <SideBarItem key={note?.id} {...note} />
-                ))
-            }
-        </List>
+                <Divider />
+
+                {
+                    (notes.length > 0)
+                        ? (<List className="animate__animated animate__fadeIn animate__faster">
+                            {
+                                notes?.map(note => (
+                                    <SideBarItem key={note?.id} {...note} />
+                                ))
+                            }
+                        </List>)
+                        : (<>
+                            <Typography variant='h7' sx={{ textAlign: 'center', my: '10', opacity: 0.7 }} fontWeight={'bold'} >
+                                You don't have Notes
+                            </Typography>
+                            <Typography variant='h7' sx={{ textAlign: 'center', my: '10', opacity: 0.4 }} fontWeight={'bold'} >
+                                Create Notes and show them here!
+                            </Typography>
+                        </>)
+                }
 
 
-        </Drawer>
+            </Drawer>
 
 
-    </Box>
-  )
+        </Box>
+    )
 }
