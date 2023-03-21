@@ -42,7 +42,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
         <Divider />
 
-        <List>
+        <List className="animate__animated animate__fadeIn animate__faster">
             {
                 notes?.map( note => (
                    <SideBarItem key={note?.id} {...note} />
