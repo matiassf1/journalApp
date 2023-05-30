@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Google from "@mui/icons-material/Google";
+import {Alert, AlertTitle} from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,9 +19,10 @@ import {
 const formData = {
   email: "",
   password: "",
-}
+};
 
 export const LoginPage = () => {
+  const [firstTime, setFirstTime] = useState(true);
   const { status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -38,12 +40,24 @@ export const LoginPage = () => {
     dispatch(startGoogleSignIn());
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setFirstTime(false);
+    }, 12000);
+  }, []);
+
   return (
     <AuthLayout title="Login">
       <form
         onSubmit={onSubmit}
         className="animate__animated animate__fadeIn animate__faster"
       >
+        {firstTime ? (
+          <Alert severity="info">
+            <AlertTitle>Demo Mode</AlertTitle>
+            To join in demoMode the email is <strong>random@random.com</strong> and the pass <strong>random. <br /> Check it out!</strong>
+          </Alert>
+        ) : null}
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
