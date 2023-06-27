@@ -55,7 +55,7 @@ export const LoginPage = () => {
         {firstTime ? (
           <Alert severity="info">
             <AlertTitle>Demo Mode</AlertTitle>
-            To join in demoMode the email is <strong>random@random.com</strong> and the pass <strong>random. <br /> Check it out!</strong>
+            To join in demoMode the email is <strong>random@random.com</strong> and the pass <strong>Random1234. <br /> Check it out!</strong>
           </Alert>
         ) : null}
         <Grid container>
