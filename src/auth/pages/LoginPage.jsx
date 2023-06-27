@@ -33,17 +33,8 @@ export const LoginPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (!email || !password) {
-     toast('Email or password missing..', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+    if (email.length < 8 || password.length < 8) {
+      toast.error('Email or password invalid..');
       return
     }
     dispatch(startLoginUserWithEmailPassword({ email, password }));

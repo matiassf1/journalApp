@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -27,16 +26,7 @@ export const authSlice = createSlice({
             state.displayName = null;
             state.photoURL = null;
             state.errorMessage = payload;
-            toast(payload, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            
         },
         checkingCredentials: ( state ) => {
             state.status = 'checking'
