@@ -32,7 +32,18 @@ export const LoginPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
+    if (!email || !password) {
+     return toast('Email or password missing..', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
     dispatch(startLoginUserWithEmailPassword({ email, password }));
   };
 
