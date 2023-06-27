@@ -34,7 +34,7 @@ export const LoginPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     if (!email || !password) {
-     return toast('Email or password missing..', {
+     toast('Email or password missing..', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -44,6 +44,7 @@ export const LoginPage = () => {
         progress: undefined,
         theme: "dark",
       });
+      return
     }
     dispatch(startLoginUserWithEmailPassword({ email, password }));
   };
