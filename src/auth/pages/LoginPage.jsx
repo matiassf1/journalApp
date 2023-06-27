@@ -11,10 +11,11 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  checkingAuthentication,
   startGoogleSignIn,
   startLoginUserWithEmailPassword,
 } from "../../store/auth/thunks";
+
+import { toast } from "react-toastify";
 
 const formData = {
   email: "",
